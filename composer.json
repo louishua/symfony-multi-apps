@@ -7,8 +7,8 @@
             "": "src/"
         },
         "classmap": [
-            "apps/api/PonyKernel.php",
-            "apps/api/PonyCache.php"
+            "apps/pony/PonyKernel.php",
+            "apps/pony/PonyCache.php"
         ]
     },
     "require": {
