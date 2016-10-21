@@ -21,8 +21,8 @@ $debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('-
 if ($debug) {
     Debug::enable();
 }
-require_once __DIR__.'/PonyKernel.php';
+require_once __DIR__.'/ApiKernel.php';
 
-$kernel = new PonyKernel($env, $debug);
+$kernel = new ApiKernel($env, $debug);
 $application = new Application($kernel);
 $application->run($input);

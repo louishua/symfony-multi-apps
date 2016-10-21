@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Debug\Debug;
 
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line
 // read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
@@ -16,7 +17,9 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
     exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 }
 
-$loader = require_once __DIR__.'/../../apps/bootstrap.php.cache';
+$loader = require __DIR__.'/../../apps/api/autoload.php';
+Debug::enable();
+
 require_once __DIR__.'/../../apps/api/ApiKernel.php';
 
 $kernel = new ApiKernel('dev', true);

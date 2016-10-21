@@ -7,8 +7,8 @@
             "": "src/"
         },
         "classmap": [
-            "apps/pony/PonyKernel.php",
-            "apps/pony/PonyCache.php"
+            "apps/api/PonyKernel.php",
+            "apps/api/PonyCache.php"
         ]
     },
     "require": {
@@ -51,6 +51,10 @@
             {
                 "app-dir": "apps/pony",
                 "web-dir": "web/pony"
+            },
+            {
+                "app-dir": "apps/api",
+                "web-dir": "web/api"
             }
         ],
 
