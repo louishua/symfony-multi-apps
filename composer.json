@@ -7,8 +7,8 @@
             "": "src/"
         },
         "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
+            "apps/pony/PonyKernel.php",
+            "apps/pony/PonyCache.php"
         ]
     },
     "require": {
@@ -30,11 +30,11 @@
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
@@ -51,16 +51,12 @@
             {
                 "app-dir": "apps/pony",
                 "web-dir": "web/pony"
-            },
-            {
-                "app-dir": "apps/api",
-                "web-dir": "web/api"
             }
         ],
 
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
+            "file": "apps/config/common_parameters.yml"
         }
     }
 }
