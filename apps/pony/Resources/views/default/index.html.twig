@@ -39,6 +39,10 @@
                     <a href="http://symfony.com/doc/{{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')[:3] }}/book/page_creation.html">
                         How to create your first page in Symfony
                     </a>
+                    <span>
+                        {#{% trans %}Symfony is great{% endtrans %}#}
+                        {{ sf|trans }}
+                    </span>
                 </p>
             </div>
 
