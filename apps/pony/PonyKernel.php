@@ -20,6 +20,7 @@ class PonyKernel extends Kernel
 //            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
 //            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new AppBundle\AppBundle(),//测试bundle
+            new Jbp\Bundle\UserBundle\JbpUserBundle(),//测试bundle
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
