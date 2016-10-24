@@ -1,3 +1,6 @@
+parameters:
+    locale: en
+
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
