@@ -55,6 +55,10 @@
             {
                 "app-dir": "apps/api",
                 "web-dir": "web/api"
+            },
+            {
+                "app-dir": "apps/usercenter",
+                "web-dir": "web/usercenter"
             }
         ],
 

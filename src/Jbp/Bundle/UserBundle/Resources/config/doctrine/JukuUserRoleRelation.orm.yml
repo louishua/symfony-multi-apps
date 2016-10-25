@@ -1,0 +1,31 @@
+Jbp\Bundle\UserBundle\Entity\JukuUserRoleRelation:
+    type: entity
+    table: juku_user_role_relation
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 用户角色关联ID
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 用户ID
+                default: '0'
+            column: user_id
+        roleId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+                comment: 角色ID
+                default: '0'
+            column: role_id
+    lifecycleCallbacks: {  }

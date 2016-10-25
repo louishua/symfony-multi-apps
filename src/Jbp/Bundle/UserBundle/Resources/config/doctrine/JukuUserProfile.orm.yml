@@ -1,0 +1,220 @@
+Jbp\Bundle\UserBundle\Entity\JukuUserProfile:
+    type: entity
+    table: juku_user_profile
+    id:
+        userId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 用户ID
+            id: true
+            column: user_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        sid:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                default: '0'
+        userType:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: user_type
+        nicename:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                comment: 昵称
+                default: ''
+        avatar:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+                comment: 头像
+                default: ''
+        avatarExt:
+            type: string
+            nullable: true
+            length: 6
+            options:
+                fixed: true
+            column: avatar_ext
+        realname:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                comment: 真实姓名
+                default: ''
+        gender:
+            type: boolean
+            nullable: false
+            options:
+                comment: 性别
+                default: '0'
+        email:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                comment: Emai
+                default: ''
+        qq:
+            type: string
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+                comment: QQ
+                default: ''
+        wechat:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                comment: 微信
+                default: ''
+        jpbEnabled:
+            type: boolean
+            nullable: false
+            options:
+                comment: '是否启用聚宝盆服务 0:未开通 1:已开通'
+                default: '0'
+            column: jpb_enabled
+        payPassword:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: true
+                comment: 支付密码
+                default: ''
+            column: pay_password
+        paySalt:
+            type: string
+            nullable: false
+            length: 6
+            options:
+                fixed: true
+                comment: 支付密码的盐值
+                default: ''
+            column: pay_salt
+        lastLoginTime:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 最后登录时间
+                default: '0'
+            column: last_login_time
+        lastLoginIp:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 最后登录IP
+                default: '0'
+            column: last_login_ip
+        loginTimes:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 登录次数
+                default: '0'
+            column: login_times
+        withdrawAccount:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+                comment: 保存用户的提现账号
+                default: ''
+            column: withdraw_account
+        withdrawOwner:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+                comment: 用于保存用户提现的收款人姓名
+                default: ''
+            column: withdraw_owner
+        withdrawBankName:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 用于保存用户提现的开户行
+                default: ''
+            column: withdraw_bank_name
+        withdrawBankAddr:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                comment: 用于保存用户提现的开户行地址
+                default: ''
+            column: withdraw_bank_addr
+        withdrawMethod:
+            type: boolean
+            nullable: false
+            options:
+                comment: 用于保存用户提现的方式。0：支付宝；1：微信；2：银行
+                default: '0'
+            column: withdraw_method
+        mobile:
+            type: string
+            nullable: false
+            length: 11
+            options:
+                fixed: true
+                comment: 手机号码
+                default: ''
+        weibo:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                comment: 微博账号
+                default: ''
+        birthday:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 生日
+                default: '0'
+        zipcode:
+            type: string
+            nullable: false
+            length: 6
+            options:
+                fixed: true
+                comment: 邮编
+                default: ''
+        address:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+                comment: 地址
+                default: ''
+    lifecycleCallbacks: {  }
