@@ -16,6 +16,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        exit('会员Bundle');
+        exit('会员Bundles');
     }
 }
