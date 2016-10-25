@@ -1,0 +1,107 @@
+Jbp\Bundle\UserBundle\Entity\JukuUserCopy:
+    type: entity
+    table: juku_user_copy
+    uniqueConstraints:
+        UNI_USER_USERNAME:
+            columns:
+                - username
+                - type
+                - shop_id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 14
+            options:
+                fixed: true
+                comment: 用户名
+        password:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: true
+                comment: 密码
+                default: ''
+        salt:
+            type: string
+            nullable: false
+            length: 6
+            options:
+                fixed: true
+                comment: 用于密码加密的盐值
+        type:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+        createTime:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 注册时间
+                default: '0'
+            column: create_time
+        updateTime:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: '0'
+            column: update_time
+        isDel:
+            type: boolean
+            nullable: false
+            options:
+                comment: 是否删除
+                default: '0'
+            column: is_del
+        status:
+            type: boolean
+            nullable: false
+            options:
+                comment: '状态:0未启用 1:启用'
+                default: '0'
+        registerIp:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 注册IP
+                default: '0'
+            column: register_ip
+        shopId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: shop_id
+        authKey:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: true
+                comment: cookie验证key
+            column: auth_key
+        wechatOpenid:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+                comment: 微信ID
+                default: ''
+            column: wechat_openid
+    lifecycleCallbacks: {  }

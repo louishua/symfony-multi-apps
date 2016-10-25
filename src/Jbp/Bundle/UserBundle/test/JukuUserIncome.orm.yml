@@ -1,0 +1,100 @@
+Jbp\Bundle\UserBundle\Entity\JukuUserIncome:
+    type: entity
+    table: juku_user_income
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        shopId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 店铺ID
+            column: shop_id
+        orderId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 订单ID
+            column: order_id
+        goodsId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 商品ID
+            column: goods_id
+        userId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 用户ID
+            column: user_id
+        merchantId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+                comment: 商家ID
+            column: merchant_id
+        income:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            options:
+                comment: 收益
+                default: '0.00'
+        type:
+            type: boolean
+            nullable: false
+            options:
+                comment: 0：分销；1：代理
+                default: '0'
+        status:
+            type: boolean
+            nullable: false
+            options:
+                comment: 状态
+                default: '0'
+        dateline:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 时间
+                default: '0'
+        incomeSn:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: true
+                comment: 收益编号
+            column: income_sn
+        payTime:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 打款时间
+                default: '0'
+            column: pay_time
+        endTime:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                comment: 结束时间
+                default: '0'
+            column: end_time
+    lifecycleCallbacks: {  }
