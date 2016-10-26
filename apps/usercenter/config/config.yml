@@ -61,6 +61,12 @@ swiftmailer:
     spool:     { type: memory }
 
 services:
-    juku_user:
-        class:        Jbp\Bundle\UserBundle\JbpUserBundle
-        arguments:    [sendmail]
+    user_service:
+        class:        Jbp\Bundle\UserBundle\Service\JbpUserService
+        arguments:    []
+    userProfile_service:
+        class:        Jbp\Bundle\UserBundle\Service\JbpUserProfileService
+        arguments:    []
+    userAccount_service:
+        class:        Jbp\Bundle\UserBundle\Service\JbpUserAccountService
+        arguments:    []

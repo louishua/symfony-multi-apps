@@ -2,75 +2,109 @@
 
 namespace Jbp\Bundle\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * JukuUserIncome
+ *
+ * @ORM\Table(name="juku_user_income")
+ * @ORM\Entity
  */
 class JukuUserIncome
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="shop_id", type="bigint", nullable=false)
      */
     private $shopId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="order_id", type="bigint", nullable=false)
      */
     private $orderId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="goods_id", type="bigint", nullable=false)
      */
     private $goodsId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="user_id", type="bigint", nullable=false)
      */
     private $userId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="merchant_id", type="bigint", nullable=false)
      */
     private $merchantId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="income", type="decimal", precision=5, scale=2, nullable=false)
      */
     private $income = '0.00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
      */
     private $type = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=false)
      */
     private $status = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="dateline", type="integer", nullable=false)
      */
     private $dateline = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="income_sn", type="string", length=16, nullable=false)
      */
     private $incomeSn;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="pay_time", type="integer", nullable=false)
      */
     private $payTime = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="end_time", type="integer", nullable=false)
      */
     private $endTime = '0';
+
 
 
     /**
@@ -371,4 +405,3 @@ class JukuUserIncome
         return $this->endTime;
     }
 }
-
