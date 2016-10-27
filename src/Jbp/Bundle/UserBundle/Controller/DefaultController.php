@@ -2,7 +2,7 @@
 
 namespace Jbp\Bundle\UserBundle\Controller;
 
-use AppBundle\Entity\Test;
+use Doctrine\Common\Util\Debug;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +16,13 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        exit('会员Bundles');
+        $userService = $this->get('user_service');
+        $reg = $userService->registerByUserMobile('1392299','123456');
+        if($reg)
+        {
+            echo '注册成功';
+        }else{
+            echo "注册失败";
+        }
     }
 }

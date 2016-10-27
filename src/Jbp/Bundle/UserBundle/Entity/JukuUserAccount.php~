@@ -2,80 +2,116 @@
 
 namespace Jbp\Bundle\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * JukuUserAccount
+ *
+ * @ORM\Table(name="juku_user_account")
+ * @ORM\Entity
  */
 class JukuUserAccount
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="user_id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $userId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="point", type="integer", nullable=false)
      */
     private $point = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="user_type", type="boolean", nullable=false)
      */
     private $userType = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="allow_withdraw", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $allowWithdraw = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="all_income", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $allIncome = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="pending_commission", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $pendingCommission = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="balance", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $balance = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sale_amount", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $saleAmount = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="total_withdraw", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $totalWithdraw = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="frozen_capital", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $frozenCapital = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="unexpenditure_commission", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $unexpenditureCommission = '0.00';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="expenditure_commission", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $expenditureCommission = '0.00';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="shop_id", type="bigint", nullable=false)
      */
     private $shopId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="shareholder", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $shareholder = '0.00';
+
 
 
     /**
@@ -400,4 +436,3 @@ class JukuUserAccount
         return $this->shareholder;
     }
 }
-

@@ -2,90 +2,137 @@
 
 namespace Jbp\Bundle\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * JukuUser
+ *
+ * @ORM\Table(name="juku_user", uniqueConstraints={@ORM\UniqueConstraint(name="UNI_USER_USERNAME", columns={"username", "type", "shop_id"})})
+ * @ORM\Entity
  */
 class JukuUser
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=14, nullable=false)
      */
     private $username;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=32, nullable=false)
      */
     private $password = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=6, nullable=false)
      */
     private $salt;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=true)
      */
     private $type = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="create_time", type="integer", nullable=false)
      */
     private $createTime = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="update_time", type="integer", nullable=false)
      */
     private $updateTime = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="is_del", type="boolean", nullable=false)
      */
     private $isDel = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=false)
      */
     private $status = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="register_ip", type="integer", nullable=false)
      */
     private $registerIp = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="shop_id", type="bigint", nullable=false)
      */
     private $shopId = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="auth_key", type="string", length=32, nullable=false)
      */
     private $authKey;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="wechat_openid", type="string", length=150, nullable=false)
      */
     private $wechatOpenid = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="wechat_unionid", type="string", length=150, nullable=false)
      */
     private $wechatUnionid = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="wechat_open_openid", type="string", length=150, nullable=false)
      */
     private $wechatOpenOpenid = '';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="version", type="boolean", nullable=false)
      */
     private $version = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="mobile", type="string", length=11, nullable=false)
+     */
+    private $mobile = '';
+
 
 
     /**
@@ -457,5 +504,28 @@ class JukuUser
     {
         return $this->version;
     }
-}
 
+    /**
+     * Set mobile
+     *
+     * @param boolean $mobile
+     *
+     * @return JukuUser
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return boolean
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+}

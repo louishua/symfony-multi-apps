@@ -2,90 +2,130 @@
 
 namespace Jbp\Bundle\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * JukuUserBill
+ *
+ * @ORM\Table(name="juku_user_bill")
+ * @ORM\Entity
  */
 class JukuUserBill
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="user_id", type="bigint", nullable=false)
      */
     private $userId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="shop_id", type="bigint", nullable=false)
      */
     private $shopId;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="user_type", type="boolean", nullable=false)
      */
     private $userType = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
      */
     private $type = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="paytype", type="boolean", nullable=false)
      */
     private $paytype = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="dateline", type="integer", nullable=false)
      */
     private $dateline = '0';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="success_time", type="integer", nullable=false)
      */
     private $successTime = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sequence_no", type="string", length=28, nullable=false)
      */
     private $sequenceNo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="detail", type="string", length=255, nullable=false)
      */
     private $detail;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="detail_extra", type="string", length=100, nullable=true)
      */
     private $detailExtra = '';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="amount", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $amount = '0.00';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=false)
      */
     private $status = '0';
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="is_del", type="boolean", nullable=false)
      */
     private $isDel;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="target_id", type="string", length=32, nullable=false)
      */
     private $targetId = '0';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="balance", type="decimal", precision=7, scale=2, nullable=false)
      */
     private $balance = '0.00';
+
 
 
     /**
@@ -458,4 +498,3 @@ class JukuUserBill
         return $this->balance;
     }
 }
-

@@ -2,45 +2,67 @@
 
 namespace Jbp\Bundle\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * JukuUserSecurity
+ *
+ * @ORM\Table(name="juku_user_security")
+ * @ORM\Entity
  */
 class JukuUserSecurity
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $userId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="security_question_1", type="string", length=30, nullable=false)
      */
     private $securityQuestion1;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="security_answer_1", type="string", length=32, nullable=false)
      */
     private $securityAnswer1;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="security_question_2", type="string", length=30, nullable=false)
      */
     private $securityQuestion2;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="security_answer_2", type="string", length=32, nullable=false)
      */
     private $securityAnswer2;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="security_question_3", type="string", length=30, nullable=false)
      */
     private $securityQuestion3;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="security_answer_3", type="string", length=32, nullable=false)
      */
     private $securityAnswer3;
+
 
 
     /**
@@ -197,4 +219,3 @@ class JukuUserSecurity
         return $this->securityAnswer3;
     }
 }
-

@@ -2,25 +2,39 @@
 
 namespace Jbp\Bundle\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * JukuUserNav
+ *
+ * @ORM\Table(name="juku_user_nav")
+ * @ORM\Entity
  */
 class JukuUserNav
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="shop_id", type="bigint", nullable=false)
      */
     private $shopId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="data", type="text", length=65535, nullable=true)
      */
     private $data;
+
 
 
     /**
@@ -81,4 +95,3 @@ class JukuUserNav
         return $this->data;
     }
 }
-
