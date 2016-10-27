@@ -61,12 +61,6 @@ swiftmailer:
     spool:     { type: memory }
 
 services:
-    user_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserService
-        arguments:    []
-    userProfile_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserProfileService
-        arguments:    []
-    userAccount_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserAccountService
-        arguments:    []
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
