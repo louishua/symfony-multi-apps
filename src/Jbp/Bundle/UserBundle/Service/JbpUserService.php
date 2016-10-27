@@ -55,9 +55,9 @@ class JbpUserService extends CommonService
      * 商家会员前台注册
      * @param array $data
      */
-    public function registerByUserMobile($username,$password)
+    public function registerByUserMobile($mobile,$password)
     {
-        $data['username'] = $username;
+        $data['mobile'] = $mobile;
         $data['password'] = $password;
         $data['type'] = 1;
         $data['shop_id'] = 0;

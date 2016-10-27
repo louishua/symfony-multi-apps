@@ -127,4 +127,12 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
             nullable: false
             options:
                 default: '0'
+        mobile:
+            type: string
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+                comment: 手机号码
+                default: ''
     lifecycleCallbacks: {  }

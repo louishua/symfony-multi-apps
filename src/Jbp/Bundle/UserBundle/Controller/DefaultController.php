@@ -17,7 +17,12 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $userService = $this->get('user_service');
-        $userService->registerByUserMobile('1392299','123456');
-        exit;
+        $reg = $userService->registerByUserMobile('1392299','123456');
+        if($reg)
+        {
+            echo '注册成功';
+        }else{
+            echo "注册失败";
+        }
     }
 }
