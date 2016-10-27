@@ -3,11 +3,8 @@
 namespace Jbp\Bundle\UserBundle\Service;
 
 use Jbp\Bundle\UserBundle\Entity\JukuUserProfile;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class JbpUserProfileService extends Controller
+class JbpUserProfileService extends CommonService
 {
 
     /**

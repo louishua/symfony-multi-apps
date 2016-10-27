@@ -16,8 +16,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-//        echo '<pre>';var_dump($this);exit;
-//        echo '<pre>';Debug::dump($this);exit;
         $userService = $this->get('user_service');
         $userService->registerByUserMobile('1392299','123456');
         exit;

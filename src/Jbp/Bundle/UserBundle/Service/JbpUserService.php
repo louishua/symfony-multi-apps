@@ -3,20 +3,10 @@
 namespace Jbp\Bundle\UserBundle\Service;
 
 use Jbp\Bundle\UserBundle\Entity\JukuUser;
-use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader;
 use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class JbpUserService extends Controller
+class JbpUserService extends CommonService
 {
-
-    public $entityManager;
-    public function __construct($entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
 
     /**
      * 会员注册通用方法
@@ -24,7 +14,8 @@ class JbpUserService extends Controller
      */
     private function register(array $data)
     {
-        $this->entityManager->getConnection()->beginTransaction();
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->beginTransaction();
         try{
             $userEntity = new JukuUser();
             $userEntity->setUsername($data['username']);
@@ -39,7 +30,7 @@ class JbpUserService extends Controller
             $userEntity->setWechatUnionid($data['wechat_unionid']);
             $userEntity->setWechatOpenOpenid($data['wechat_open_openid']);
             $userEntity->setVersion(0);
-            $this->entityManager->persist($userEntity);
+            $em->persist($userEntity);
 
             //新增user_profile
 //            $profileData = [];
@@ -51,12 +42,11 @@ class JbpUserService extends Controller
 //            $userAccountService = $this->get('userAccount_service');
 //            $userAccountService->newRecord($accountData);
 
-            $this->entityManager->flush();
-            $this->entityManager->getConnection()->commit();
+            $em->flush();
+            $em->getConnection()->commit();
             return true;
         }catch (Exception $e){
-            $this->entityManager->getConnection()->rollback();
-//            throw $e;
+            $em->getConnection()->rollback();
             return false;
         }
     }
@@ -163,7 +153,6 @@ class JbpUserService extends Controller
             return true;
         }catch (Exception $e){
             $em->getConnection()->rollback();
-//            throw $e;
             return false;
         }
     }
