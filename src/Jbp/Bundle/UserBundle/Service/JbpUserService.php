@@ -3,12 +3,20 @@
 namespace Jbp\Bundle\UserBundle\Service;
 
 use Jbp\Bundle\UserBundle\Entity\JukuUser;
+use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class JbpUserService extends Controller
 {
+
+    public $entityManager;
+    public function __construct($entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
 
     /**
      * 会员注册通用方法
@@ -16,9 +24,7 @@ class JbpUserService extends Controller
      */
     private function register(array $data)
     {
-        var_dump($this);echo 22;exit;
-        $em = $this->getDoctrine()->getManager();
-        $em->getConnection()->beginTransaction();echo 33;exit;
+        $this->entityManager->getConnection()->beginTransaction();
         try{
             $userEntity = new JukuUser();
             $userEntity->setUsername($data['username']);
@@ -28,12 +34,12 @@ class JbpUserService extends Controller
             $userEntity->setCreateTime(time());
             $userEntity->setRegisterIp(ip2long($_SERVER['REMOTE_ADDR']));
             $userEntity->setShopId($data['shop_id']);
-            $userEntity->setAuthKey($data['auth_key']);
+            $userEntity->setAuthKey('');
             $userEntity->setWechatOpenid($data['wechat_openid']);
             $userEntity->setWechatUnionid($data['wechat_unionid']);
             $userEntity->setWechatOpenOpenid($data['wechat_open_openid']);
             $userEntity->setVersion(0);
-            $em->persist($userEntity);
+            $this->entityManager->persist($userEntity);
 
             //新增user_profile
 //            $profileData = [];
@@ -45,11 +51,11 @@ class JbpUserService extends Controller
 //            $userAccountService = $this->get('userAccount_service');
 //            $userAccountService->newRecord($accountData);
 
-            $em->flush();
-            $em->getConnection()->commit();
+            $this->entityManager->flush();
+            $this->entityManager->getConnection()->commit();
             return true;
         }catch (Exception $e){
-            $em->getConnection()->rollback();
+            $this->entityManager->getConnection()->rollback();
 //            throw $e;
             return false;
         }

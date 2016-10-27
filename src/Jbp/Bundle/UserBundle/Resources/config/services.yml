@@ -7,12 +7,15 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    entityManage_service:
+        class:        Jbp\Bundle\UserBundle\Controller\JbpUserServiceController
+        arguments:    ['@doctrine.orm.entity_manager']
     user_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserService
-        arguments:    []
+        arguments:    ['@doctrine.orm.entity_manager']
     userProfile_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserProfileService
-        arguments:    []
+        arguments:    ['@doctrine.orm.entity_manager']
     userAccount_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserAccountService
-        arguments:    []
+        arguments:    ['@doctrine.orm.entity_manager']

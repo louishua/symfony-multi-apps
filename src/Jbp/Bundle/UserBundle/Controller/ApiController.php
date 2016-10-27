@@ -2,6 +2,7 @@
 
 namespace Jbp\Bundle\UserBundle\Controller;
 
+use Doctrine\Common\Util\Debug;
 use Jbp\Bundle\UserBundle\Entity\JukuUser;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,6 +11,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ApiController extends Controller
 {
+
+    public function __construct()
+    {
+        var_dump($this);exit;
+    }
+
+    public function indexAction()
+    {
+//        echo '<pre>';Debug::dump($this);exit;
+        echo '<pre>';var_dump($this);exit;
+    }
 
 //                          数据库操作
 //    /**

@@ -10,6 +10,11 @@ use Symfony\Component\Config\FileLocator;
 class JbpUserExtension extends Extension
 {
 
+    /**
+     * 加载Bundle内部service
+     * @param array $configs
+     * @param ContainerBuilder $container
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader(

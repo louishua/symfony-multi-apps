@@ -2,7 +2,6 @@
 
 namespace Jbp\Bundle\UserBundle\Controller;
 
-use AppBundle\Entity\Test;
 use Doctrine\Common\Util\Debug;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,7 +16,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        echo '<pre>';Debug::dump($this->getDoctrine()->getManager());exit;
+//        echo '<pre>';var_dump($this);exit;
+//        echo '<pre>';Debug::dump($this);exit;
         $userService = $this->get('user_service');
         $userService->registerByUserMobile('1392299','123456');
         exit;
