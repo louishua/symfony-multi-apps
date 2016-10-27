@@ -15,7 +15,7 @@ class JbpUserProfileService extends CommonService
     {
         $em = $this->getDoctrine()->getManager();
         $userProfileEntity = new JukuUserProfile();
-        //...
+        $userProfileEntity->setUserId(1);
         $em->persist($userProfileEntity);
     }
 

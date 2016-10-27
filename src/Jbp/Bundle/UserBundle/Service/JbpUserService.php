@@ -8,6 +8,11 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 class JbpUserService extends CommonService
 {
 
+    public function __construct($doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
+
     /**
      * 会员注册通用方法
      * @param array $data
@@ -18,7 +23,7 @@ class JbpUserService extends CommonService
         $em->getConnection()->beginTransaction();
         try{
             $userEntity = new JukuUser();
-            $userEntity->setUsername($data['username']);
+            $userEntity->setUsername($this->produceName());
             $userEntity->setPassword($data['password']);
             $userEntity->setSalt('');
             $userEntity->setType($data['type']);
@@ -30,17 +35,23 @@ class JbpUserService extends CommonService
             $userEntity->setWechatUnionid($data['wechat_unionid']);
             $userEntity->setWechatOpenOpenid($data['wechat_open_openid']);
             $userEntity->setVersion(0);
+            $userEntity->setMobile($data['mobile']);
             $em->persist($userEntity);
 
             //新增user_profile
-//            $profileData = [];
-//            $userProfileService = $this->get('userProfile_service');
-//            $userProfileService->newRecord($profileData);
-//
-//            //新增user_account
-//            $accountData = [];
-//            $userAccountService = $this->get('userAccount_service');
-//            $userAccountService->newRecord($accountData);
+            $profileData = [
+                'user_id'=>$userEntity->getId(),
+            ];
+            $userProfileService = $this->get('userProfile_service');
+            $userProfileService->newRecord($profileData);
+
+            //新增user_account
+            $accountData = [
+                'user_id'=>$userEntity->getId(),
+                'shop_id'=>0,
+            ];
+            $userAccountService = $this->get('userAccount_service');
+            $userAccountService->newRecord($accountData);
 
             $em->flush();
             $em->getConnection()->commit();
@@ -157,4 +168,17 @@ class JbpUserService extends CommonService
         }
     }
 
+
+    public function produceName($length=8 , $prex='jk')
+    {
+        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';//62个字符
+        $strlen = 62;
+        while ($length > $strlen) {
+            $str .= $str;
+            $strlen += 62;
+        }
+        $str = str_shuffle($str);
+        $username = $prex.substr($str,0,$length);
+        return $username;
+    }
 }

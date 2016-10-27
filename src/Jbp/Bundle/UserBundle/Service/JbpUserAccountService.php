@@ -14,9 +14,10 @@ class JbpUserAccountService extends CommonService
     public function newrecord($data)
     {
         $em = $this->getDoctrine()->getManager();
-        $userProfileEntity = new JukuUserAccount();
-        //...
-        $em->persist($userProfileEntity);
+        $userAccountEntity = new JukuUserAccount();
+        $userAccountEntity->setUserId(1);
+        $userAccountEntity->setShopId(0);
+        $em->persist($userAccountEntity);
     }
 
     /**

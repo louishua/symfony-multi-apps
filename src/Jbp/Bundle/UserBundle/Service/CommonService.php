@@ -1,8 +1,9 @@
 <?php
 
 namespace Jbp\Bundle\UserBundle\Service;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CommonService
+class CommonService extends Controller
 {
 
     public $doctrine;

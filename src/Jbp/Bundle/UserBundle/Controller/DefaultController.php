@@ -3,12 +3,13 @@
 namespace Jbp\Bundle\UserBundle\Controller;
 
 use Doctrine\Common\Util\Debug;
+use Jbp\Bundle\UserBundle\Service\CommonService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class DefaultController extends CommonController
 {
 
     /**
@@ -24,5 +25,6 @@ class DefaultController extends Controller
         }else{
             echo "注册失败";
         }
+        exit;
     }
 }

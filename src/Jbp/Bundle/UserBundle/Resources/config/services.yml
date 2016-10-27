@@ -9,7 +9,7 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
     user_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserService
-        arguments:    ['@doctrine']
+        arguments:    ['@doctrine','@userProfile_service','@userAccount_service']
     userProfile_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserProfileService
         arguments:    ['@doctrine']
