@@ -113,6 +113,18 @@ class JukuUserAccount
     private $shareholder = '0.00';
 
 
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return JukuUserAccount
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+        return $this;
+    }
 
     /**
      * Get userId

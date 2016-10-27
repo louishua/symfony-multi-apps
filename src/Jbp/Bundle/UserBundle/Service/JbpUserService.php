@@ -8,11 +8,6 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 class JbpUserService extends CommonService
 {
 
-    public function __construct($doctrine)
-    {
-        $this->doctrine = $doctrine;
-    }
-
     /**
      * 会员注册通用方法
      * @param array $data
@@ -37,23 +32,23 @@ class JbpUserService extends CommonService
             $userEntity->setVersion(0);
             $userEntity->setMobile($data['mobile']);
             $em->persist($userEntity);
+            $em->flush();
 
             //新增user_profile
-            $profileData = [
-                'user_id'=>$userEntity->getId(),
-            ];
-            $userProfileService = $this->get('userProfile_service');
-            $userProfileService->newRecord($profileData);
+//            $profileData = [
+//                'user_id' => $userEntity->getId(),
+//            ];
+//            $userProfileService = $this->get('userProfile_service');
+//            $userProfileService->newRecord($profileData);
 
             //新增user_account
-            $accountData = [
-                'user_id'=>$userEntity->getId(),
-                'shop_id'=>0,
-            ];
-            $userAccountService = $this->get('userAccount_service');
-            $userAccountService->newRecord($accountData);
+//            $accountData = [
+//                'user_id' => $userEntity->getId(),
+//                'shop_id' => 0,
+//            ];
+//            $userAccountService = $this->get('userAccount_service');
+//            $userAccountService->newRecord($accountData);
 
-            $em->flush();
             $em->getConnection()->commit();
             return true;
         }catch (Exception $e){

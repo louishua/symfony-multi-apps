@@ -132,7 +132,7 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
             nullable: false
             length: 11
             options:
-                fixed: false
+                fixed: true
                 comment: 手机号码
                 default: ''
     lifecycleCallbacks: {  }

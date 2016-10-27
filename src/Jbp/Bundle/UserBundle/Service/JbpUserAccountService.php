@@ -4,7 +4,7 @@ namespace Jbp\Bundle\UserBundle\Service;
 
 use Jbp\Bundle\UserBundle\Entity\JukuUserAccount;
 
-class JbpUserAccountService extends CommonService
+class JbpUserAccountService
 {
 
     /**
@@ -15,9 +15,10 @@ class JbpUserAccountService extends CommonService
     {
         $em = $this->getDoctrine()->getManager();
         $userAccountEntity = new JukuUserAccount();
-        $userAccountEntity->setUserId(1);
+        $userAccountEntity->setUserId($data['user_id']);
         $userAccountEntity->setShopId(0);
         $em->persist($userAccountEntity);
+        $em->flush();
     }
 
     /**
@@ -31,5 +32,6 @@ class JbpUserAccountService extends CommonService
         $userAccountEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUserAccount')->find($id);
         //...
         $em->persist($userAccountEntity);
+        $em->flush();
     }
 }

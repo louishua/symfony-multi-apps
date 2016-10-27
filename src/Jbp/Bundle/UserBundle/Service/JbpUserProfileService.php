@@ -15,8 +15,9 @@ class JbpUserProfileService extends CommonService
     {
         $em = $this->getDoctrine()->getManager();
         $userProfileEntity = new JukuUserProfile();
-        $userProfileEntity->setUserId(1);
+        $userProfileEntity->setUserId($data['user_id']);
         $em->persist($userProfileEntity);
+        $em->flush();
     }
 
     /**
@@ -27,8 +28,9 @@ class JbpUserProfileService extends CommonService
     public function updateAtOpenService($id,$data)
     {
         $em = $this->getDoctrine()->getManager();
-        $userAccountEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUserProfile')->find($id);
+        $userProfileEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUserProfile')->find($id);
         //...
-        $em->persist($userAccountEntity);
+        $em->persist($userProfileEntity);
+        $em->flush();
     }
 }

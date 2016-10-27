@@ -204,6 +204,18 @@ class JukuUserProfile
     private $address = '';
 
 
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return JukuUserProfile
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+        return $this;
+    }
 
     /**
      * Get userId
