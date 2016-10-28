@@ -2,7 +2,7 @@
 
 namespace Jbp\Bundle\UserBundle\Service;
 
-use Jbp\Bundle\UserBundle\Entity\JukuUserAccount;
+use Jbp\Bundle\UserBundle\Entity\JukuUserSecurity;
 
 class JbpUserSecurityService extends CommonService
 {
@@ -13,7 +13,7 @@ class JbpUserSecurityService extends CommonService
     public function newrecord($data)
     {
         $em = $this->getDoctrine()->getManager();
-        $userSecurityEntity = new JukuUserAccount();
+        $userSecurityEntity = new JukuUserSecurity();
         $userSecurityEntity->setSecurityQuestion1($data['quest1']);
         $userSecurityEntity->setSecurityAnswer1($data['answer1']);
         $userSecurityEntity->setSecurityQuestion2($data['quest2']);

@@ -276,26 +276,6 @@ class JbpUserService extends CommonService
     }
 
     /**
-     * Username生成器
-     * @param int $length
-     * @param string $prex
-     * @return string
-     */
-    public function produceName($length=8 , $prex='jk')
-    {
-        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';//62个字符
-        $strlen = 62;
-        while ($length > $strlen) {
-            $str .= $str;
-            $strlen += 62;
-        }
-        $str = str_shuffle($str);
-        $username = $prex.substr($str,0,$length);
-        return $username;
-    }
-
-
-    /**
      * 根据ID查找用户名
      * @param $id
      * @return null
@@ -325,5 +305,24 @@ class JbpUserService extends CommonService
         }else{
             return null;
         }
+    }
+
+    /**
+     * Username生成器
+     * @param int $length
+     * @param string $prex
+     * @return string
+     */
+    public function produceName($length=8 , $prex='jk')
+    {
+        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';//62个字符
+        $strlen = 62;
+        while ($length > $strlen) {
+            $str .= $str;
+            $strlen += 62;
+        }
+        $str = str_shuffle($str);
+        $username = $prex.substr($str,0,$length);
+        return $username;
     }
 }

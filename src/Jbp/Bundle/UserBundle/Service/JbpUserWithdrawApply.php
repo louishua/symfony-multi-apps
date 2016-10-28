@@ -2,7 +2,7 @@
 
 namespace Jbp\Bundle\UserBundle\Service;
 
-use Jbp\Bundle\UserBundle\Entity\JukuUserAccount;
+use Jbp\Bundle\UserBundle\Entity\JukuUserWithdrawApply;
 
 class JbpUserWithdrawApplyService extends CommonService
 {
@@ -13,7 +13,7 @@ class JbpUserWithdrawApplyService extends CommonService
     public function newrecord($data)
     {
         $em = $this->getDoctrine()->getManager();
-        $userSecurityEntity = new JukuUserAccount();
+        $userSecurityEntity = new JukuUserWithdrawApply();
         $userSecurityEntity->setSecurityQuestion1($data['quest1']);
         $userSecurityEntity->setSecurityAnswer1($data['answer1']);
         $userSecurityEntity->setSecurityQuestion2($data['quest2']);
