@@ -9,7 +9,7 @@ class JbpUserService extends CommonService
 {
 
     /**
-     * 会员注册通用方法
+     * 会员注册通用方法 
      * @param array $data
      */
     private function register(array $data)
