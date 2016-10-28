@@ -7,7 +7,6 @@ Jbp\Bundle\UserBundle\Entity\JukuUserRoleRelation:
             nullable: false
             options:
                 unsigned: true
-                comment: 用户角色关联ID
             id: true
             generator:
                 strategy: IDENTITY

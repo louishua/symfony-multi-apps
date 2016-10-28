@@ -2,17 +2,22 @@ Jbp\Bundle\UserBundle\Entity\JukuUserProfile:
     type: entity
     table: juku_user_profile
     id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
         userId:
             type: bigint
             nullable: false
             options:
                 unsigned: true
                 comment: 用户ID
-            id: true
             column: user_id
-            generator:
-                strategy: IDENTITY
-    fields:
         sid:
             type: bigint
             nullable: false

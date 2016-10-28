@@ -2,16 +2,21 @@ Jbp\Bundle\UserBundle\Entity\JukuUserAccount:
     type: entity
     table: juku_user_account
     id:
-        userId:
+        id:
             type: bigint
             nullable: false
             options:
                 unsigned: true
             id: true
-            column: user_id
             generator:
                 strategy: IDENTITY
     fields:
+        userId:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: true
+            column: user_id
         point:
             type: integer
             nullable: false

@@ -2,16 +2,21 @@ Jbp\Bundle\UserBundle\Entity\JukuUserSecurity:
     type: entity
     table: juku_user_security
     id:
-        userId:
+        id:
             type: integer
             nullable: false
             options:
                 unsigned: true
             id: true
-            column: user_id
             generator:
                 strategy: IDENTITY
     fields:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: user_id
         securityQuestion1:
             type: string
             nullable: false

@@ -1,0 +1,110 @@
+<?php
+
+namespace Jbp\Bundle\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JukuUserWithdrawApply
+ *
+ * @ORM\Table(name="juku_user_withdraw_apply")
+ * @ORM\Entity
+ */
+class JukuUserWithdrawApply
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="bigint", nullable=false)
+     */
+    private $userId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amount", type="decimal", precision=7, scale=2, nullable=false)
+     */
+    private $amount;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="wd_realname", type="string", length=10, nullable=false)
+     */
+    private $wdRealname;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="wd_method", type="boolean", nullable=false)
+     */
+    private $wdMethod = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="wd_account", type="string", length=50, nullable=false)
+     */
+    private $wdAccount;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fee", type="decimal", precision=7, scale=2, nullable=false)
+     */
+    private $fee = '0.00';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=false)
+     */
+    private $status = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dateline", type="integer", nullable=false)
+     */
+    private $dateline = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="shop_id", type="bigint", nullable=false)
+     */
+    private $shopId;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="user_type", type="boolean", nullable=false)
+     */
+    private $userType = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="audit_time", type="integer", nullable=false)
+     */
+    private $auditTime = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="audit_memo", type="string", length=100, nullable=false)
+     */
+    private $auditMemo = '';
+
+
+}
+

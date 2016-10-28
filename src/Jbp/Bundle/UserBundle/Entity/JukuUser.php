@@ -127,11 +127,11 @@ class JukuUser
     private $version = '0';
 
     /**
-     * @var boolean
+     * @var string
      *
      * @ORM\Column(name="mobile", type="string", length=11, nullable=false)
      */
-    private $mobile = '';
+    private $mobile;
 
 
 
@@ -508,7 +508,7 @@ class JukuUser
     /**
      * Set mobile
      *
-     * @param boolean $mobile
+     * @param string $mobile
      *
      * @return JukuUser
      */
@@ -522,7 +522,7 @@ class JukuUser
     /**
      * Get mobile
      *
-     * @return boolean
+     * @return string
      */
     public function getMobile()
     {

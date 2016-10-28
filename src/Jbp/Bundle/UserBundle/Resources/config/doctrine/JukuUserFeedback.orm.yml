@@ -3,7 +3,7 @@ Jbp\Bundle\UserBundle\Entity\JukuUserFeedback:
     table: juku_user_feedback
     id:
         id:
-            type: integer
+            type: bigint
             nullable: false
             options:
                 unsigned: true

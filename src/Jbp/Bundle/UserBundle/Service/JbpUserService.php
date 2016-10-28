@@ -35,19 +35,19 @@ class JbpUserService extends CommonService
             $em->flush();
 
             //新增user_profile
-//            $profileData = [
-//                'user_id' => $userEntity->getId(),
-//            ];
-//            $userProfileService = $this->get('userProfile_service');
-//            $userProfileService->newRecord($profileData);
+            $profileData = [
+                'user_id' => $userEntity->getId(),
+            ];
+            $userProfileService = $this->get('userProfile_service');
+            $userProfileService->newRecord($profileData);
 
             //新增user_account
-//            $accountData = [
-//                'user_id' => $userEntity->getId(),
-//                'shop_id' => 0,
-//            ];
-//            $userAccountService = $this->get('userAccount_service');
-//            $userAccountService->newRecord($accountData);
+            $accountData = [
+                'user_id' => $userEntity->getId(),
+                'shop_id' => 0,
+            ];
+            $userAccountService = $this->get('userAccount_service');
+            $userAccountService->newRecord($accountData);
 
             $em->getConnection()->commit();
             return true;
@@ -55,6 +55,21 @@ class JbpUserService extends CommonService
             $em->getConnection()->rollback();
             return false;
         }
+    }
+
+    private function salerRegister($data)
+    {
+        $data['type'] = 1;
+        $data['shop_id'] = 0;
+        $data['wechat_openid'] = '';
+        $data['wechat_unionid'] = '';
+        $data['wechat_open_openid'] = '';
+        return $this->register($data);
+    }
+
+    private function buyerRegister($data)
+    {
+        return $this->register($data);
     }
 
     /**
@@ -65,12 +80,7 @@ class JbpUserService extends CommonService
     {
         $data['mobile'] = $mobile;
         $data['password'] = $password;
-        $data['type'] = 1;
-        $data['shop_id'] = 0;
-        $data['wechat_openid'] = '';
-        $data['wechat_unionid'] = '';
-        $data['wechat_open_openid'] = '';
-        return $this->register($data);
+        return $this->salerRegister($data);
     }
 
     /**
@@ -81,12 +91,7 @@ class JbpUserService extends CommonService
     {
         $data['username'] = $username;
         $data['password'] = $password;
-        $data['type'] = 1;
-        $data['shop_id'] = 0;
-        $data['wechat_openid'] = '';
-        $data['wechat_unionid'] = '';
-        $data['wechat_open_openid'] = '';
-        return $this->register($data);
+        return $this->salerRegister($data);
     }
 
     /**
@@ -99,7 +104,19 @@ class JbpUserService extends CommonService
         $data['wechat_openid'] = $wechatInfo['wechat_openid'];
         $data['wechat_unionid'] = $wechatInfo['wechat_unionid'];
         $data['wechat_open_openid'] = $wechatInfo['wechat_open_openid'];
-        return $this->register($data);
+        return $this->buyerRegister($data);
+    }
+
+
+    /**
+     * 会员登录通用方法
+     * @param array $data
+     */
+    public function logout()
+    {
+        session_start();
+        $_SESSION['user_id'] = null;
+        return true;
     }
 
     /**
@@ -108,6 +125,8 @@ class JbpUserService extends CommonService
      */
     private function login(array $data)
     {
+        session_start();
+        $_SESSION['user_id'] = $data['user_id'];
         return true;
     }
 
@@ -115,11 +134,21 @@ class JbpUserService extends CommonService
      * 手机登录
      * @param array $data
      */
-    public function loginByMobile($username,$password)
+    public function loginByMobile($mobile,$password)
     {
-        $data['username'] = $username;
+        $data['mobile'] = $mobile;
         $data['password'] = $password;
-        return $this->login($data);
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneBy([
+            'mobile'=>$mobile,
+            'password'=>$password,
+        ]);
+        if(empty($findEntity))
+        {
+            return false;
+        }else{
+            $loginInfo = ['user_id'=>$findEntity->getId()];
+            return $this->login($loginInfo);
+        }
     }
 
     /**
@@ -164,6 +193,12 @@ class JbpUserService extends CommonService
     }
 
 
+    /**
+     * Username生成器
+     * @param int $length
+     * @param string $prex
+     * @return string
+     */
     public function produceName($length=8 , $prex='jk')
     {
         $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';//62个字符
@@ -175,5 +210,17 @@ class JbpUserService extends CommonService
         $str = str_shuffle($str);
         $username = $prex.substr($str,0,$length);
         return $username;
+    }
+
+
+    public function getNameById($id)
+    {
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneById($id);
+        if(!empty($findEntity))
+        {
+            return $findEntity->getUsername();
+        }else{
+            return null;
+        }
     }
 }

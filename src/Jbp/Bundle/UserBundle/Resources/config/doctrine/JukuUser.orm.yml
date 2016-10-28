@@ -134,5 +134,4 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
             options:
                 fixed: true
                 comment: 手机号码
-                default: ''
     lifecycleCallbacks: {  }

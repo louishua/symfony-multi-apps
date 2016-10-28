@@ -4,7 +4,7 @@ namespace Jbp\Bundle\UserBundle\Service;
 
 use Jbp\Bundle\UserBundle\Entity\JukuUserAccount;
 
-class JbpUserAccountService
+class JbpUserAccountService extends CommonService
 {
 
     /**

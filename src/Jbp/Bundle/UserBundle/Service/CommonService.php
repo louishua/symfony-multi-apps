@@ -1,12 +1,12 @@
 <?php
 
 namespace Jbp\Bundle\UserBundle\Service;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver;
-use Symfony\Component\HttpKernel\Kernel;
-use Symfony\Component\HttpKernel\KernelInterface;
 
-class CommonService
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+
+class CommonService extends Controller
 {
 
     public $doctrine;
@@ -36,5 +36,14 @@ class CommonService
     {
         return $this->kernel->getContainer()->get($id);
     }
+
+//    /**
+//     * 服务获取request
+//     * @return object
+//     */
+//    public function getRequest()
+//    {
+//        echo '<pre>';var_dump($this->kernel);exit;
+//    }
 
 }

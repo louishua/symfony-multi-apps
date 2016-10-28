@@ -15,9 +15,16 @@ class JukuUserProfile
     /**
      * @var integer
      *
-     * @ORM\Column(name="user_id", type="bigint")
+     * @ORM\Column(name="id", type="bigint")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="bigint", nullable=false)
      */
     private $userId;
 
@@ -204,6 +211,17 @@ class JukuUserProfile
     private $address = '';
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * Set userId
      *
@@ -214,6 +232,7 @@ class JukuUserProfile
     public function setUserId($userId)
     {
         $this->userId = $userId;
+
         return $this;
     }
 
