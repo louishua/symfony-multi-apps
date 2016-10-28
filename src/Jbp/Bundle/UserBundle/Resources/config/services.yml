@@ -10,23 +10,16 @@ services:
 
     user_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserService
-        arguments:    ['@Kernel','@Doctrine']
+        arguments:    ['@Kernel']
     userProfile_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserProfileService
-        arguments:    ['@Kernel','@Doctrine']
+        arguments:    ['@Kernel']
     userAccount_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserAccountService
-        arguments:    ['@Kernel','@Doctrine']
-
-#
-#    user_service:
-#        class:        Jbp\Bundle\UserBundle\Controller\JbpUserController
-##        arguments:    []
-#    userProfile_service:
-#        class:        Jbp\Bundle\UserBundle\Controller\JbpUserProfileController
-##        arguments:    []
-#    userAccount_service:
-#        class:        Jbp\Bundle\UserBundle\Controller\JbpUserAccountController
-##        arguments:    []
-#    test_service:
-#        class:        Jbp\Bundle\UserBundle\Controller\ApiController
+        arguments:    ['@Kernel']
+    userSecurity_service:
+        class:        Jbp\Bundle\UserBundle\Service\JbpUserSecurityService
+        arguments:    ['@Kernel']
+    userWithdrawApply_service:
+        class:        Jbp\Bundle\UserBundle\Service\JbpUserWithdrawApplyService
+        arguments:    ['@Kernel']
