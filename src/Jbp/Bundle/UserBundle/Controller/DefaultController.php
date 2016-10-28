@@ -15,8 +15,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        session_start();
-        $sessionUser = empty($_SESSION['user_id'])?'':$_SESSION['user_id'];
+        $sessionService = $this->get('session');
+        $sessionUser = $sessionService->get('user_id');
         if(empty($sessionUser)){
             echo '未登录,';
         }else{

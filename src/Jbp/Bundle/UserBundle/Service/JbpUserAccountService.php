@@ -21,17 +21,4 @@ class JbpUserAccountService extends CommonService
         $em->flush();
     }
 
-    /**
-     * 店铺开通时更新数据
-     * @param $id
-     * @param $data
-     */
-    public function updateAtOpenService($id,$data)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $userAccountEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUserAccount')->find($id);
-        //...
-        $em->persist($userAccountEntity);
-        $em->flush();
-    }
 }

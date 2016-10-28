@@ -18,3 +18,19 @@ userBundle-login:
 userBundle-logout:
     path: /logout
     defaults: { _controller: JbpUserBundle:Default:logout }
+
+userBundle-api-register:
+    path: /api/reg
+    defaults: { _controller: JbpUserBundle:Api:mobileRegister }
+#
+#userBundle-register:
+#    path: /reg
+#    defaults: { _controller: JbpUserBundle:Default:register }
+#
+#userBundle-login:
+#    path: /login
+#    defaults: { _controller: JbpUserBundle:Default:login }
+#
+#userBundle-logout:
+#    path: /logout
+#    defaults: { _controller: JbpUserBundle:Default:logout }

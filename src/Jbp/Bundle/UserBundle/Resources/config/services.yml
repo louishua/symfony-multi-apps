@@ -7,6 +7,7 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
     user_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserService
         arguments:    ['@Kernel','@Doctrine']
@@ -16,3 +17,16 @@ services:
     userAccount_service:
         class:        Jbp\Bundle\UserBundle\Service\JbpUserAccountService
         arguments:    ['@Kernel','@Doctrine']
+
+#
+#    user_service:
+#        class:        Jbp\Bundle\UserBundle\Controller\JbpUserController
+##        arguments:    []
+#    userProfile_service:
+#        class:        Jbp\Bundle\UserBundle\Controller\JbpUserProfileController
+##        arguments:    []
+#    userAccount_service:
+#        class:        Jbp\Bundle\UserBundle\Controller\JbpUserAccountController
+##        arguments:    []
+#    test_service:
+#        class:        Jbp\Bundle\UserBundle\Controller\ApiController

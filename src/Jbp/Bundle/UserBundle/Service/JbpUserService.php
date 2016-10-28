@@ -57,6 +57,11 @@ class JbpUserService extends CommonService
         }
     }
 
+    /**
+     * 商家注册
+     * @param $data
+     * @return bool
+     */
     private function salerRegister($data)
     {
         $data['type'] = 1;
@@ -67,24 +72,38 @@ class JbpUserService extends CommonService
         return $this->register($data);
     }
 
+    /**
+     * 买家注册
+     * @param $data
+     * @return bool
+     */
     private function buyerRegister($data)
     {
         return $this->register($data);
     }
 
     /**
-     * 商家会员前台注册
+     * 商家手机注册
      * @param array $data
      */
     public function registerByUserMobile($mobile,$password)
     {
-        $data['mobile'] = $mobile;
-        $data['password'] = $password;
-        return $this->salerRegister($data);
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneBy([
+            'mobile'=>$mobile,
+        ]);
+        if(empty($findEntity))
+        {
+            $data['mobile'] = $mobile;
+            $data['password'] = $password;
+            return $this->salerRegister($data);
+        }else{
+            //手机号已被注册
+            return false;
+        }
     }
 
     /**
-     * 会员后台注册
+     * 商家后台注册
      * @param array $data
      */
     public function registerByAdmin($username,$password)
@@ -95,16 +114,25 @@ class JbpUserService extends CommonService
     }
 
     /**
-     * 买家会员微信注册
+     * 买家微信注册
      * @param array $data
      */
     public function registerByBuyerWechat(array $wechatInfo)
     {
-        $data['type'] = 0;
-        $data['wechat_openid'] = $wechatInfo['wechat_openid'];
-        $data['wechat_unionid'] = $wechatInfo['wechat_unionid'];
-        $data['wechat_open_openid'] = $wechatInfo['wechat_open_openid'];
-        return $this->buyerRegister($data);
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneBy([
+            'wechat_openid'=>$wechatInfo['wechat_openid'],
+        ]);
+        if(empty($findEntity))
+        {
+            $data['type'] = 0;
+            $data['wechat_openid'] = $wechatInfo['wechat_openid'];
+            $data['wechat_unionid'] = $wechatInfo['wechat_unionid'];
+            $data['wechat_open_openid'] = $wechatInfo['wechat_open_openid'];
+            return $this->buyerRegister($data);
+        }else{
+            //微信已被注册
+            return false;
+        }
     }
 
 
@@ -114,8 +142,8 @@ class JbpUserService extends CommonService
      */
     public function logout()
     {
-        session_start();
-        $_SESSION['user_id'] = null;
+        $sessionService = $this->get('session');
+        $sessionService->set('user_id',null);
         return true;
     }
 
@@ -125,8 +153,8 @@ class JbpUserService extends CommonService
      */
     private function login(array $data)
     {
-        session_start();
-        $_SESSION['user_id'] = $data['user_id'];
+        $sessionService = $this->get('session');
+        $sessionService->set('user_id',$data['user_id']);
         return true;
     }
 
@@ -155,7 +183,7 @@ class JbpUserService extends CommonService
      * 微信登录
      * @param array $data
      */
-    public function loginByWechat($wechatOpenid)
+    public function loginByWechatOpenid($wechatOpenid)
     {
         $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneBy([
             'wechat_openid'=>$wechatOpenid,
@@ -165,38 +193,87 @@ class JbpUserService extends CommonService
     }
 
     /**
-     * 开通店铺（更新会员信息）
-     *
+     * 微信登录
+     * @param array $data
      */
-    public function openService($userId)
+    public function loginByWechatUnionid($wechatUnionid)
     {
-        $em = $this->getDoctrine()->getManager();
-        try{
-            //新增shop表
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneBy([
+            'wechat_unionid'=>$wechatUnionid,
+        ]);
+        $data['user_id'] = $findEntity->getId();
+        return $this->login($data);
+    }
 
-            //更新user_profile
-            $profileData = [];
-            $userProfileService = $this->get('userProfile_service');
-            $userProfileService->updateAtOpenService($profileData);
-            $em->flush();
-            //更新user表shop_id
-            $userEntity = new JukuUser();
-            $userEntity->shop_id = 0;
-            $em->persist($userEntity);
-            $em->flush();
-            //更新user_account表
-            $accountData = [];
-            $userAccountService = $this->get('userAccount_service');
-            $userAccountService->updateAtOpenService($accountData);
-            $em->flush();
-            $em->getConnection()->commit();
-            return true;
-        }catch (Exception $e){
-            $em->getConnection()->rollback();
+
+    /**
+     * 更新登录密码
+     * @param $userid
+     * @param $mobile
+     * @return bool
+     */
+    public function updatePassword($id,$password)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->find($id);
+        $findEntity->setPassword($password);
+        $em->flush();
+        return true;
+    }
+
+    /**
+     * 更新手机号码
+     * @param $userid
+     * @param $mobile
+     * @return bool
+     */
+    public function updateMobile($id,$mobile)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->find($id);
+        $findEntity->setMobile($mobile);
+        $em->flush();
+        return true;
+    }
+
+    /**
+     * 根据手机号查找用户
+     * @param $mobile
+     * @return bool
+     */
+    public function findByMobile($mobile)
+    {
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneByMobile($mobile);
+        if(!empty($findEntity))
+        {
+            return $findEntity;
+        }else{
             return false;
         }
     }
 
+    /**
+     * 更新微信信息
+     * @param $userid
+     * @param $mobile
+     * @return bool
+     */
+    public function updateWechat($id,array $wechatInfo)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->find($id);
+        if(!empty($wechatInfo['wechat_openid'])) {
+            $findEntity->setMobile($wechatInfo['wechat_openid']);
+        }
+        if(!empty($wechatInfo['wechat_unionid'])) {
+            $findEntity->setMobile($wechatInfo['wechat_unionid']);
+        }
+        if(!empty($wechatInfo['wechat_open_openid'])) {
+            $findEntity->setMobile($wechatInfo['wechat_open_openid']);
+        }
+        $em->flush();
+        return true;
+    }
 
     /**
      * Username生成器
@@ -218,12 +295,33 @@ class JbpUserService extends CommonService
     }
 
 
+    /**
+     * 根据ID查找用户名
+     * @param $id
+     * @return null
+     */
     public function getNameById($id)
     {
         $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneById($id);
         if(!empty($findEntity))
         {
             return $findEntity->getUsername();
+        }else{
+            return null;
+        }
+    }
+
+    /**
+     * 根据ID查找记录
+     * @param $id
+     * @return null
+     */
+    public function getRecordById($id)
+    {
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneById($id);
+        if(!empty($findEntity))
+        {
+            return $findEntity;
         }else{
             return null;
         }

@@ -13,10 +13,10 @@ class CommonService extends Controller
 
     protected $kernel;
 
-    public function __construct(KernelInterface $kernel,$doctrine)
+    public function __construct(KernelInterface $kernel)
     {
         $this->kernel = $kernel;
-        $this->doctrine = $doctrine;
+        $this->doctrine = $this->get('doctrine');
     }
 
     /**
