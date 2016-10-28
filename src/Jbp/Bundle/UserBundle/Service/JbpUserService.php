@@ -109,7 +109,7 @@ class JbpUserService extends CommonService
 
 
     /**
-     * 会员登录通用方法
+     * 会员注销通用方法
      * @param array $data
      */
     public function logout()
@@ -146,7 +146,7 @@ class JbpUserService extends CommonService
         {
             return false;
         }else{
-            $loginInfo = ['user_id'=>$findEntity->getId()];
+            $loginInfo['user_id'] = $findEntity->getId();
             return $this->login($loginInfo);
         }
     }
@@ -155,9 +155,12 @@ class JbpUserService extends CommonService
      * 微信登录
      * @param array $data
      */
-    public function loginByWechat($wechatInfo)
+    public function loginByWechat($wechatOpenid)
     {
-        $data = $wechatInfo;
+        $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneBy([
+            'wechat_openid'=>$wechatOpenid,
+        ]);
+        $data['user_id'] = $findEntity->getId();
         return $this->login($data);
     }
 
@@ -175,10 +178,12 @@ class JbpUserService extends CommonService
             $profileData = [];
             $userProfileService = $this->get('userProfile_service');
             $userProfileService->updateAtOpenService($profileData);
+            $em->flush();
             //更新user表shop_id
             $userEntity = new JukuUser();
             $userEntity->shop_id = 0;
             $em->persist($userEntity);
+            $em->flush();
             //更新user_account表
             $accountData = [];
             $userAccountService = $this->get('userAccount_service');

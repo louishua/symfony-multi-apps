@@ -36,6 +36,5 @@ class CommonService extends Controller
     {
         return $this->kernel->getContainer()->get($id);
     }
-    
 
 }
