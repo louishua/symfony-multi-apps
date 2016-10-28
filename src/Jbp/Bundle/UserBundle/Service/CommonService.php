@@ -36,14 +36,6 @@ class CommonService extends Controller
     {
         return $this->kernel->getContainer()->get($id);
     }
-
-//    /**
-//     * 服务获取request
-//     * @return object
-//     */
-//    public function getRequest()
-//    {
-//        echo '<pre>';var_dump($this->kernel);exit;
-//    }
+    
 
 }
