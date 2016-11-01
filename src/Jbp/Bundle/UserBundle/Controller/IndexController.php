@@ -13,7 +13,6 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
-        echo 22;exit;
         $sessionService = $this->get('session');
         $sessionUser = $sessionService->get('user_id');
         if(empty($sessionUser)){

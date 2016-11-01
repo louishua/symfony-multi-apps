@@ -1,6 +1,7 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User:                      plaintext
+        Symfony\Component\Security\Core\User\User:  plaintext
+        Jbp\Bundle\UserBundle\Entity\JukuUser:      plaintext
 
     providers:
         default:
@@ -11,7 +12,7 @@ security:
         admin:
             memory:
                 users:
-                    admin:          { roles: 'ROLE_ADMIN', password: secrete }
+                    admin:          { roles: 'ROLE_ADMIN', password: 123456 }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

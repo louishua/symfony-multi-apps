@@ -20,7 +20,7 @@ class UsercenterKernel extends Kernel
 //            new JMS\AopBundle\JMSAopBundle(),
 //            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
 //            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-//            new AppBundle\AppBundle(),//测试bundle
+            new AppBundle\AppBundle(),//测试bundle
             new Jbp\Bundle\UserBundle\JbpUserBundle(),//测试bundle
         );
 
