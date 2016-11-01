@@ -10,7 +10,7 @@ class JbpUserSecurityService extends CommonService
      * 新增安全问题
      * @param $data
      */
-    public function newrecord($data)
+    public function createRecord($data)
     {
         $em = $this->getDoctrine()->getManager();
         $userSecurityEntity = new JukuUserSecurity();

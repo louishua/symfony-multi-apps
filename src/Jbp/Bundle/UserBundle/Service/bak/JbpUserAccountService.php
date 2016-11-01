@@ -11,7 +11,7 @@ class JbpUserAccountService extends CommonService
      * 新增用户账单初始数据
      * @param $data
      */
-    public function newrecord($data)
+    public function createRecord($data)
     {
         $em = $this->getDoctrine()->getManager();
         $userAccountEntity = new JukuUserAccount();

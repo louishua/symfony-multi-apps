@@ -19,7 +19,7 @@ class JbpUserService extends CommonService
         try{
             $userEntity = new JukuUser();
             $userEntity->setUsername($this->produceName());
-            $userEntity->setPassword($data['password']);
+            $userEntity->setPassword($this->encryptPassword($data['password']));
             $userEntity->setSalt('');
             $userEntity->setType($data['type']);
             $userEntity->setCreateTime(time());
@@ -39,7 +39,7 @@ class JbpUserService extends CommonService
                 'user_id' => $userEntity->getId(),
             ];
             $userProfileService = $this->get('userProfile_service');
-            $userProfileService->newRecord($profileData);
+            $userProfileService->createRecord($profileData);
 
             //新增user_account
             $accountData = [
@@ -47,7 +47,7 @@ class JbpUserService extends CommonService
                 'shop_id' => 0,
             ];
             $userAccountService = $this->get('userAccount_service');
-            $userAccountService->newRecord($accountData);
+            $userAccountService->createRecord($accountData);
 
             $em->getConnection()->commit();
             return true;
@@ -86,7 +86,7 @@ class JbpUserService extends CommonService
      * 商家手机注册
      * @param array $data
      */
-    public function registerByUserMobile($mobile,$password)
+    public function registerBySalerMobile($mobile,$password)
     {
         $findEntity = $this->getDoctrine()->getRepository('JbpUserBundle:JukuUser')->findOneBy([
             'mobile'=>$mobile,
@@ -97,7 +97,6 @@ class JbpUserService extends CommonService
             $data['password'] = $password;
             return $this->salerRegister($data);
         }else{
-            //手机号已被注册
             return false;
         }
     }
@@ -130,7 +129,6 @@ class JbpUserService extends CommonService
             $data['wechat_open_openid'] = $wechatInfo['wechat_open_openid'];
             return $this->buyerRegister($data);
         }else{
-            //微信已被注册
             return false;
         }
     }
@@ -308,7 +306,7 @@ class JbpUserService extends CommonService
     }
 
     /**
-     * Username生成器
+     * 账号名生成器
      * @param int $length
      * @param string $prex
      * @return string
@@ -324,5 +322,16 @@ class JbpUserService extends CommonService
         $str = str_shuffle($str);
         $username = $prex.substr($str,0,$length);
         return $username;
+    }
+
+
+    /**
+     * 密码加密
+     * @param $originPassword
+     * @return string
+     */
+    private function encryptPassword($originPassword='')
+    {
+        return $originPassword;
     }
 }

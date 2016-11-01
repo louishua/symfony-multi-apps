@@ -8,18 +8,12 @@ services:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
-    user_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserService
+    baseuser_service:
+        class:        Jbp\Bundle\UserBundle\Service\BaseUserService
         arguments:    ['@Kernel']
-    userProfile_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserProfileService
+    saler_service:
+        class:        Jbp\Bundle\UserBundle\Service\SalerService
         arguments:    ['@Kernel']
-    userAccount_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserAccountService
-        arguments:    ['@Kernel']
-    userSecurity_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserSecurityService
-        arguments:    ['@Kernel']
-    userWithdrawApply_service:
-        class:        Jbp\Bundle\UserBundle\Service\JbpUserWithdrawApplyService
+    buyer_service:
+        class:        Jbp\Bundle\UserBundle\Service\BuyerService
         arguments:    ['@Kernel']

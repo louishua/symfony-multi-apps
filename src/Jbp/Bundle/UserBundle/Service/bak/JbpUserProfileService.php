@@ -11,7 +11,7 @@ class JbpUserProfileService extends CommonService
      * 新增用户配置初始数据
      * @param $data
      */
-    public function newrecord($data)
+    public function createRecord($data)
     {
         $em = $this->getDoctrine()->getManager();
         $userProfileEntity = new JukuUserProfile();
@@ -37,9 +37,9 @@ class JbpUserProfileService extends CommonService
     }
 
     /**
-     * 更新提现资料
-     * @param $userid
-     * @param $mobile
+     * 更新提现信息
+     * @param $id
+     * @param array $withdraw
      * @return bool
      */
     public function updateWithdraw($id,array $withdraw)

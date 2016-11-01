@@ -20,6 +20,7 @@ class CommonService extends Controller
     }
 
     /**
+     * 获取doctrine
      * @return mixed
      */
     public function getDoctrine()
