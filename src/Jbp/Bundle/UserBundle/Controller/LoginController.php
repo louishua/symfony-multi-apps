@@ -4,6 +4,7 @@ namespace Jbp\Bundle\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 
 class LoginController extends Controller
 {
@@ -15,7 +16,6 @@ class LoginController extends Controller
     {
         $curUser = $this->getUser();
         if ($curUser) {
-            var_dump($curUser);exit;
             return $this->redirectToRoute("jbp_user_index");
         }
         $authenticationUtils = $this->get('security.authentication_utils');

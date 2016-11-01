@@ -140,6 +140,34 @@ class JukuUser
      */
     private $roles;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean", nullable=false)
+     */
+    private $enabled = '1';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="account_non_expired", type="boolean", nullable=false)
+     */
+    private $accountNonExpired = '1';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="account_non_locked", type="boolean", nullable=false)
+     */
+    private $accountNonLocked = '1';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="credentials_non_expired", type="boolean", nullable=false)
+     */
+    private $credentialsNonExpired = '1';
+
 
 
     /**
@@ -562,5 +590,162 @@ class JukuUser
             $roles[] = 'ROLE_USER';
         }
         return array_unique($roles);
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return JukuUser
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set accountNonExpired
+     *
+     * @param boolean $accountNonExpired
+     *
+     * @return JukuUser
+     */
+    public function setAccountNonExpired($accountNonExpired)
+    {
+        $this->accountNonExpired = $accountNonExpired;
+
+        return $this;
+    }
+
+    /**
+     * Get accountNonExpired
+     *
+     * @return boolean
+     */
+    public function getAccountNonExpired()
+    {
+        return $this->accountNonExpired;
+    }
+
+    /**
+     * Set accountNonLocked
+     *
+     * @param boolean $accountNonLocked
+     *
+     * @return JukuUser
+     */
+    public function setAccountNonLocked($accountNonLocked)
+    {
+        $this->accountNonLocked = $accountNonLocked;
+
+        return $this;
+    }
+
+    /**
+     * Get accountNonLocked
+     *
+     * @return boolean
+     */
+    public function getAccountNonLocked()
+    {
+        return $this->accountNonLocked;
+    }
+
+    /**
+     * Set credentialsNonExpired
+     *
+     * @param boolean $credentialsNonExpired
+     *
+     * @return JukuUser
+     */
+    public function setCredentialsNonExpired($credentialsNonExpired)
+    {
+        $this->credentialsNonExpired = $credentialsNonExpired;
+
+        return $this;
+    }
+
+    /**
+     * Get credentialsNonExpired
+     *
+     * @return boolean
+     */
+    public function getCredentialsNonExpired()
+    {
+        return $this->credentialsNonExpired;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function isAccountNonExpired()
+    {
+        return $this->accountNonExpired;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return $this->accountNonLocked;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return $this->credentialsNonExpired;
+    }
+
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            //$this->salt,
+            $this->enabled,
+            $this->accountNonExpired,
+            $this->accountNonLocked,
+            $this->credentialsNonExpired,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            //$this->salt
+            $this->enabled,
+            $this->accountNonExpired,
+            $this->accountNonLocked,
+            $this->credentialsNonExpired,
+            ) = unserialize($serialized);
     }
 }

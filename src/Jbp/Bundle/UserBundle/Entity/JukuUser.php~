@@ -140,6 +140,34 @@ class JukuUser
      */
     private $roles;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean", nullable=false)
+     */
+    private $enabled = '1';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="account_non_expired", type="boolean", nullable=false)
+     */
+    private $accountNonExpired = '1';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="account_non_locked", type="boolean", nullable=false)
+     */
+    private $accountNonLocked = '1';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="credentials_non_expired", type="boolean", nullable=false)
+     */
+    private $credentialsNonExpired = '1';
+
 
 }
 

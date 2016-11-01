@@ -17,7 +17,6 @@ class RegisterController extends Controller
         $password = $request->query->get('password','123456');
         $userService = $this->get('saler_service');
         $reg = $userService->registerByMobile($mobile,$password);
-        
         if($reg)
         {
             echo '注册成功'.time();exit;

@@ -9,10 +9,12 @@ security:
                 class: Jbp\Bundle\UserBundle\Entity\JukuUser
                 property: username
 
-        admin:
+        in_memory:
             memory:
                 users:
-                    admin:          { roles: 'ROLE_ADMIN', password: secrete }
+                    admin:
+                        roles: 'ROLE_ADMIN'
+                        password: 123456
 
 
     firewalls:
@@ -27,12 +29,13 @@ security:
             security: false
 
         secured_area:
+            anonymous: ~
             pattern:    ^/
             form_login:
                 check_path: jbp_user_login_check
                 login_path: jbp_user_login
                 default_target_path: jbp_user_index
-                #csrf_token_generator: security.csrf.token_manager
+#                csrf_token_generator: security.csrf.token_manager
 
             logout:
                 path:   jbp_user_logout

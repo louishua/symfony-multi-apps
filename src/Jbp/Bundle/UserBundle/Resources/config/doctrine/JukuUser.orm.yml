@@ -141,4 +141,27 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
             options:
                 fixed: false
                 comment: 角色
+        enabled:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        accountNonExpired:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: account_non_expired
+        accountNonLocked:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: account_non_locked
+        credentialsNonExpired:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: credentials_non_expired
     lifecycleCallbacks: {  }
