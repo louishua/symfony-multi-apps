@@ -1,11 +1,11 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: 127.0.0.1
-    database_port: 3306
-    database_name: jbp9_symfony_release
-    database_user: root
-    database_password: root
+    database_host: 14.152.92.12
+    database_port: 53306
+    database_name: jbp9_syfmony_develop
+    database_user: jbp9_v30
+    database_password: Q2K0k4JZCz14B901
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null

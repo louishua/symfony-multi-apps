@@ -1,25 +1,3 @@
-#app:
-#    resource: "@AppBundle/Controller/"
-#    type:     annotation
-
-
-user_default_index:
-    path: /
-    defaults: { _controller: JbpUserBundle:Index:index }
-
-user_default_register:
-    path: /reg
-    defaults: { _controller: JbpUserBundle:Register:index }
-
-user_default_login:
-    path: /login
-    defaults: { _controller: JbpUserBundle:Login:index }
-
-user_default_dologin:
-    path: /login_check
-    defaults: { _controller: JbpUserBundle:Login:doLogin }
-
-
-user_default_logout:
-    path: /logout
-    defaults: { _controller: JbpUserBundle:login:logout }
+jbpuserbundle:
+    prefix:     /user
+    resource:   "@JbpUserBundle/Resources/config/routing.yml"
