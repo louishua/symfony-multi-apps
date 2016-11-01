@@ -19,45 +19,35 @@ class LoginController extends Controller
 
         $curUser = $this->getUser();
         if ($curUser) {
-            return $this->redirectToRoute("/");
+            return $this->redirectToRoute("jbp_user_index");
         }
-        $session = $request->getSession();
+
+        $authenticationUtils = $this->get('security.authentication_utils');
+
         // get the login error if there is one
-        if ($request->attributes->has(Security::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(
-                Security::AUTHENTICATION_ERROR
-            );
-        } elseif (null !== $session && $session->has(Security::AUTHENTICATION_ERROR)) {
-            $error = $session->get(Security::AUTHENTICATION_ERROR);
-            $session->remove(Security::AUTHENTICATION_ERROR);
-        } else {
-            $error = '';
-        }
+        $error = $authenticationUtils->getLastAuthenticationError();
+
         // last username entered by the user
-        $lastUsername = (null === $session) ? '' : $session->get(Security::LAST_USERNAME);
-        return array(
-            // last username entered by the user
-            'last_username' => $lastUsername,//$session->get(SecurityContextInterface::LAST_USERNAME),
-            'error'         => $error,
-        );
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+//        return $this->render(
+//            'JbpWebBundle:Security:login.html.twig',
+//            array(
+//                // last username entered by the user
+//                'last_username' => $lastUsername,
+//                'error'         => $error,
+//            )
+//        );
     }
 
-    public function doLoginAction(Request $request){
-    }
-
-    /**
-     * @param Request $request
-     */
-    public function logoutAction(Request $request)
+    public function loginCheckAction()
     {
-        $userService = $this->get('user_service');
-        $reg = $userService->logout();
-        if(!$reg)
-        {
-            echo "注销失败".time();exit;
-        }else{
-            echo "注销成功".time();
-            return $this->redirectToRoute('userBundle-index');
-        }
+
     }
+
+    public function loginOutAction()
+    {
+
+    }
+
 }
