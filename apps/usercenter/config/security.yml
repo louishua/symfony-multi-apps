@@ -1,6 +1,5 @@
 security:
     encoders:
-<<<<<<< HEAD
         Symfony\Component\Security\Core\User\User:    plaintext
         Jbp\Bundle\UserBundle\Entity\JukuUser:        plaintext
 
@@ -15,21 +14,6 @@ security:
                 users:
                     admin:          { roles: 'ROLE_ADMIN', password: secrete }
 
-=======
-        Symfony\Component\Security\Core\User\User:                      plaintext
-
-    providers:
-        default:
-            entity:
-                class: Jbp\Bundle\UserBundle\Entity\JukuUser
-                property: username
-
-        admin:
-            memory:
-                users:
-                    admin:          { roles: 'ROLE_ADMIN', password: secrete }
-
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -38,11 +22,7 @@ security:
 
         #安全设置跳过登录页
         login:
-<<<<<<< HEAD
             pattern:  ^/user/(login|reg)$
-=======
-            pattern:  ^/user/login$
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
             security: false
 
         secured_area:
@@ -51,11 +31,7 @@ security:
                 check_path: jbp_user_login_check
                 login_path: jbp_user_login
                 default_target_path: jbp_user_index
-<<<<<<< HEAD
-#                csrf_token_generator: security.csrf.token_manager
-=======
                 #csrf_token_generator: security.csrf.token_manager
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 
             logout:
                 path:   jbp_user_logout
@@ -68,7 +44,3 @@ security:
 
     access_control:
         - { path: ^/user/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-<<<<<<< HEAD
-=======
-
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5

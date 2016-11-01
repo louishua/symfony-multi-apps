@@ -3,14 +3,20 @@
 namespace Jbp\Bundle\UserBundle\Controller;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 =======
+=======
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
+<<<<<<< HEAD
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
+=======
 >>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 
 class LoginController extends Controller
@@ -21,6 +27,7 @@ class LoginController extends Controller
      */
     public function indexAction(Request $request)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         $curUser = $this->getUser();
         if ($curUser) {
@@ -45,6 +52,8 @@ class LoginController extends Controller
     public function loginOutAction()
     {
 =======
+=======
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 
         $curUser = $this->getUser();
         if ($curUser) {
@@ -77,6 +86,9 @@ class LoginController extends Controller
     public function loginOutAction()
     {
 
+<<<<<<< HEAD
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
+=======
 >>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
     }
 
