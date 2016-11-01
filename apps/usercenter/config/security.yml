@@ -1,33 +1,8 @@
 security:
     encoders:
-<<<<<<< HEAD
-<<<<<<< HEAD
-        Symfony\Component\Security\Core\User\User:    plaintext
-        Jbp\Bundle\UserBundle\Entity\JukuUser:        plaintext
-
-    providers:
-        main:
-            entity:
-                class: Jbp\Bundle\UserBundle\Entity\JukuUser
-                property: username
-
-        in_memory:
-            memory:
-                users:
-                    admin:
-                        roles: 'ROLE_ADMIN'
-                        password: 123456
-
-
-=======
         Symfony\Component\Security\Core\User\User:                      plaintext
 
     providers:
-=======
-        Symfony\Component\Security\Core\User\User:                      plaintext
-
-    providers:
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
         default:
             entity:
                 class: Jbp\Bundle\UserBundle\Entity\JukuUser
@@ -38,10 +13,6 @@ security:
                 users:
                     admin:          { roles: 'ROLE_ADMIN', password: secrete }
 
-<<<<<<< HEAD
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -50,38 +21,16 @@ security:
 
         #安全设置跳过登录页
         login:
-<<<<<<< HEAD
-<<<<<<< HEAD
-            pattern:  ^/user/(login|reg)$
-            security: false
-
-        secured_area:
-            anonymous: ~
-=======
-=======
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
             pattern:  ^/user/login$
             security: false
 
         secured_area:
-<<<<<<< HEAD
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
             pattern:    ^/
             form_login:
                 check_path: jbp_user_login_check
                 login_path: jbp_user_login
                 default_target_path: jbp_user_index
-<<<<<<< HEAD
-<<<<<<< HEAD
-#                csrf_token_generator: security.csrf.token_manager
-=======
                 #csrf_token_generator: security.csrf.token_manager
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
-                #csrf_token_generator: security.csrf.token_manager
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 
             logout:
                 path:   jbp_user_logout
@@ -94,11 +43,4 @@ security:
 
     access_control:
         - { path: ^/user/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
-
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5

@@ -2,21 +2,10 @@
 
 namespace Jbp\Bundle\UserBundle\Controller;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-=======
-=======
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-<<<<<<< HEAD
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 use Symfony\Component\Security\Core\Security;
 
 class LoginController extends Controller
@@ -27,35 +16,11 @@ class LoginController extends Controller
      */
     public function indexAction(Request $request)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
-
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
         $curUser = $this->getUser();
         if ($curUser) {
             return $this->redirectToRoute("jbp_user_index");
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        $authenticationUtils = $this->get('security.authentication_utils');
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
-        return $this->render('login/index.html.twig',[
-            'last_username' => $lastUsername,
-            'error'         => $error,
-        ]);
-    }
-
-
-    public function loginCheckAction()
-    {
-=======
-=======
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 
         $authenticationUtils = $this->get('security.authentication_utils');
 
@@ -78,22 +43,11 @@ class LoginController extends Controller
     public function loginCheckAction()
     {
 
-<<<<<<< HEAD
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
     }
 
     public function loginOutAction()
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
-=======
-
->>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
     }
 
 }
