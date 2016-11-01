@@ -2,8 +2,15 @@
 
 namespace Jbp\Bundle\UserBundle\Controller;
 
+<<<<<<< HEAD
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+=======
+use Doctrine\Common\Util\Debug;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
 use Symfony\Component\Security\Core\Security;
 
 class LoginController extends Controller
@@ -14,10 +21,15 @@ class LoginController extends Controller
      */
     public function indexAction(Request $request)
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
         $curUser = $this->getUser();
         if ($curUser) {
             return $this->redirectToRoute("jbp_user_index");
         }
+<<<<<<< HEAD
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -30,10 +42,38 @@ class LoginController extends Controller
 
     public function loginCheckAction()
     {
+=======
+
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+//        return $this->render(
+//            'JbpWebBundle:Security:login.html.twig',
+//            array(
+//                // last username entered by the user
+//                'last_username' => $lastUsername,
+//                'error'         => $error,
+//            )
+//        );
+    }
+
+    public function loginCheckAction()
+    {
+
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
     }
 
     public function loginOutAction()
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> f60832038a874a1ed70371b062a904c2f42f68d5
     }
 
 }
