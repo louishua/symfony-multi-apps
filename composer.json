@@ -62,6 +62,10 @@
             {
                 "app-dir": "apps/usercenter",
                 "web-dir": "web/usercenter"
+            },
+	    {
+                "app-dir": "apps/oauth",
+                "web-dir": "web/oauth"
             }
         ],
 

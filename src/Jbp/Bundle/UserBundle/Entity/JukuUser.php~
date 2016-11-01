@@ -133,6 +133,13 @@ class JukuUser
      */
     private $mobile;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="roles", type="text", length=65535, nullable=false)
+     */
+    private $roles;
+
 
 }
 

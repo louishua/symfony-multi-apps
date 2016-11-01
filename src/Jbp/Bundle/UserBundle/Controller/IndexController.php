@@ -2,10 +2,8 @@
 
 namespace Jbp\Bundle\UserBundle\Controller;
 
-use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends Controller
 {
@@ -15,6 +13,7 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
+        echo 22;exit;
         $sessionService = $this->get('session');
         $sessionUser = $sessionService->get('user_id');
         if(empty($sessionUser)){

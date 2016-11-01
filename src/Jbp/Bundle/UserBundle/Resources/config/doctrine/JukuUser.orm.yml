@@ -134,4 +134,11 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
             options:
                 fixed: true
                 comment: 手机号码
+        roles:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+                comment: 角色
     lifecycleCallbacks: {  }
