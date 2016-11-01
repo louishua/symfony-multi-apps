@@ -1,0 +1,21 @@
+
+jbp_user_index:
+    path: /
+    defaults: { _controller: JbpUserBundle:Index:index }
+
+jbp_user_register:
+    path: /reg
+    defaults: { _controller: JbpUserBundle:Register:index }
+
+jbp_user_login:
+    path: /login
+    defaults: { _controller: JbpUserBundle:Login:index }
+
+jbp_user_login_check:
+    path: /login_check
+    defaults: { _controller: JbpUserBundle:Login:loginCheck }
+
+jbp_user_login_out:
+    path: /logout
+    defaults: { _controller: JbpUserBundle:Login:loginOut }
+

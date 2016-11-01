@@ -1,0 +1,4 @@
+
+authbucketoauth2bundle:
+    prefix:     /api/oauth2
+    resource:   "@AuthBucketOAuth2Bundle/Resources/config/routing.yml"
