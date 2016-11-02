@@ -1,3 +1,0 @@
-jbpuserbundle:
-    prefix:     /user
-    resource:   "@JbpUserBundle/Resources/config/routing.yml"

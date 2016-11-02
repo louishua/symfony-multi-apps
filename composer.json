@@ -5,11 +5,7 @@
     "autoload": {
         "psr-4": {
             "": "projects/"
-        },
-        "classmap": [
-            "apps/pony/PonyKernel.php",
-            "apps/pony/PonyCache.php"
-        ]
+        }
     },
     "require": {
         "php": ">=5.5.9",
@@ -21,7 +17,6 @@
         "sensio/distribution-bundle": "~5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "symfony/assetic-bundle": "^2.8",
         "knplabs/knp-paginator-bundle": "^2.5",
         "authbucket/oauth2-symfony-bundle": "^4.0",
         "playbloom/guzzle-bundle": "^1.1"
@@ -35,7 +30,6 @@
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Jbp\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
@@ -52,26 +46,14 @@
     "extra": {
         "dm-apps":[
             {
-                "app-dir": "apps/pony",
-                "web-dir": "web/pony"
-            },
-            {
-                "app-dir": "apps/api",
-                "web-dir": "web/api"
-            },
-            {
-                "app-dir": "apps/usercenter",
-                "web-dir": "web/usercenter"
-            },
-	    {
-                "app-dir": "apps/oauth",
-                "web-dir": "web/oauth"
+                "app-dir": "projects/Jbp/Bundle/UserBundle/app",
+                "web-dir": "projects/Jbp/Bundle/UserBundle/web"
             }
         ],
 
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "apps/config/common_parameters.yml"
+            "file": "common/config/common_parameters.yml"
         }
     }
 }
