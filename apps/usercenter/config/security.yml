@@ -22,7 +22,7 @@ security:
 
         #安全设置跳过登录页
         login:
-            pattern:  ^/user/login$
+            pattern:  ^/user/(login|login_check|logout)$
             security: false
 
         secured_area:
@@ -31,7 +31,7 @@ security:
                 check_path: jbp_user_login_check
                 login_path: jbp_user_login
                 default_target_path: jbp_user_index
-                #csrf_token_generator: security.csrf.token_manager
+                csrf_token_generator: security.csrf.token_manager
 
             logout:
                 path:   jbp_user_logout

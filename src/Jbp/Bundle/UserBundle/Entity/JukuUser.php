@@ -3,6 +3,7 @@
 namespace Jbp\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * JukuUser
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="juku_user", uniqueConstraints={@ORM\UniqueConstraint(name="UNI_USER_USERNAME", columns={"username", "type", "shop_id"})})
  * @ORM\Entity
  */
-class JukuUser
+class JukuUser implements AdvancedUserInterface,\Serializable
 {
     /**
      * @var integer

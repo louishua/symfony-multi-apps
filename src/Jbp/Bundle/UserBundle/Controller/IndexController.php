@@ -13,15 +13,13 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $sessionService = $this->get('session');
-        $sessionUser = $sessionService->get('user_id');
-        if(empty($sessionUser)){
-            echo '未登录,';
+        $curUser = $this->getUser();
+        if(empty($curUser))
+        {
+            echo "请先登陆,<a href='login'>登陆</a>";
         }else{
-            $userService = $this->get('user_service');
-            $username = $userService->getNameById($sessionUser);
-            echo '你好，'.$username.',';
+            echo "你好，".$curUser->getUsername().",<a href='logout'>注销</a>";
         }
-        echo '会员首页';exit;
+        exit;
     }
 }
