@@ -13,13 +13,7 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $curUser = $this->getUser();
-        if(empty($curUser))
-        {
-            echo "请先登陆,<a href='login'>登陆</a>";
-        }else{
-            echo "你好，".$curUser->getUsername().",<a href='logout'>注销</a>";
-        }
-        exit;
+        var_dump("我进来了");exit;
+
     }
 }

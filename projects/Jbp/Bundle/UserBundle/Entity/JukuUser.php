@@ -3,8 +3,8 @@
 namespace Jbp\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-
 /**
  * JukuUser
  *
@@ -46,7 +46,7 @@ class JukuUser implements AdvancedUserInterface,\Serializable
     /**
      * @var boolean
      *
-     * @ORM\Column(name="type", type="boolean", nullable=true)
+     * @ORM\Column(name="type", type="boolean", nullable=false)
      */
     private $type = '0';
 
@@ -132,7 +132,7 @@ class JukuUser implements AdvancedUserInterface,\Serializable
      *
      * @ORM\Column(name="mobile", type="string", length=11, nullable=false)
      */
-    private $mobile;
+    private $mobile = '';
 
     /**
      * @var string
@@ -140,6 +140,7 @@ class JukuUser implements AdvancedUserInterface,\Serializable
      * @ORM\Column(name="roles", type="text", length=65535, nullable=false)
      */
     private $roles;
+
 
     /**
      * @var boolean
@@ -168,6 +169,7 @@ class JukuUser implements AdvancedUserInterface,\Serializable
      * @ORM\Column(name="credentials_non_expired", type="boolean", nullable=false)
      */
     private $credentialsNonExpired = '1';
+
 
 
 
@@ -726,12 +728,20 @@ class JukuUser implements AdvancedUserInterface,\Serializable
         return serialize(array(
             $this->id,
             $this->username,
-            $this->password,
-            //$this->salt,
-            $this->enabled,
-            $this->accountNonExpired,
-            $this->accountNonLocked,
-            $this->credentialsNonExpired,
+            $this->type,
+            $this->createTime,
+            $this->updateTime,
+            $this->isDel,
+            $this->status,
+            $this->registerIp,
+            $this->shopId,
+            $this->authKey,
+            $this->wechatOpenid,
+            $this->wechatUnionid,
+            $this->wechatOpenOpenid,
+            $this->version,
+            $this->mobile,
+            $this->roles
         ));
     }
 
@@ -741,12 +751,20 @@ class JukuUser implements AdvancedUserInterface,\Serializable
         list (
             $this->id,
             $this->username,
-            $this->password,
-            //$this->salt
-            $this->enabled,
-            $this->accountNonExpired,
-            $this->accountNonLocked,
-            $this->credentialsNonExpired,
+            $this->type,
+            $this->createTime,
+            $this->updateTime,
+            $this->isDel,
+            $this->status,
+            $this->registerIp,
+            $this->shopId,
+            $this->authKey,
+            $this->wechatOpenid,
+            $this->wechatUnionid,
+            $this->wechatOpenOpenid,
+            $this->version,
+            $this->mobile,
+            $this->roles
             ) = unserialize($serialized);
     }
 }
