@@ -15,7 +15,7 @@ jbp_user_login_check:
     path: /login_check
     defaults: { _controller: JbpUserBundle:Login:loginCheck }
 
-jbp_user_login_out:
+jbp_user_logout:
     path: /logout
     defaults: { _controller: JbpUserBundle:Login:loginOut }
 

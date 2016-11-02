@@ -41,7 +41,7 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
                 comment: 用于密码加密的盐值
         type:
             type: boolean
-            nullable: true
+            nullable: false
             options:
                 default: '0'
         createTime:
@@ -134,6 +134,7 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
             options:
                 fixed: true
                 comment: 手机号码
+                default: ''
         roles:
             type: text
             nullable: false
@@ -141,27 +142,4 @@ Jbp\Bundle\UserBundle\Entity\JukuUser:
             options:
                 fixed: false
                 comment: 角色
-        enabled:
-            type: boolean
-            nullable: false
-            options:
-                default: '1'
-        accountNonExpired:
-            type: boolean
-            nullable: false
-            options:
-                default: '1'
-            column: account_non_expired
-        accountNonLocked:
-            type: boolean
-            nullable: false
-            options:
-                default: '1'
-            column: account_non_locked
-        credentialsNonExpired:
-            type: boolean
-            nullable: false
-            options:
-                default: '1'
-            column: credentials_non_expired
     lifecycleCallbacks: {  }
