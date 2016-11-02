@@ -15,7 +15,14 @@ jbp_user_login_check:
     path: /login_check
     defaults: { _controller: JbpUserBundle:Login:loginCheck }
 
-jbp_user_logout:
+jbp_user_after_login:
+    path: /after_login
+    defaults: { _controller: JbpUserBundle:Login:afterLogin }
+
+jbp_user_login_out:
     path: /logout
     defaults: { _controller: JbpUserBundle:Login:loginOut }
 
+jbp_user_after_logout:
+    path: /after_logout
+    defaults: { _controller: JbpUserBundle:Login:afterLogout }

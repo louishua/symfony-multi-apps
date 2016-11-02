@@ -30,12 +30,12 @@ security:
             form_login:
                 check_path: /user/login_check
                 login_path: /user/login
-                default_target_path: /user
+                default_target_path: /user/after_login
                 csrf_token_generator: security.csrf.token_manager
 
             logout:
                 path:   /user/logout
-                target: /user/login
+                target: /user/after_login
 
             remember_me:
                 secret:   '%secret%'
