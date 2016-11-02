@@ -13,6 +13,7 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
+        var_dump($this->getRequest()->getSession()->get('jbp_userid'));
         $curUser = $this->getUser();
         if(empty($curUser))
         {
