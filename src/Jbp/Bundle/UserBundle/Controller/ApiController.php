@@ -2,10 +2,8 @@
 
 namespace Jbp\Bundle\UserBundle\Controller;
 
-use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class ApiController extends Controller
 {

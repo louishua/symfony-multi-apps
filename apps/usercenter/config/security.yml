@@ -20,7 +20,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        #安全设置跳过登录页
+#        安全设置跳过登录页
         login:
             pattern:  ^/user/login$
             security: false
@@ -28,14 +28,14 @@ security:
         secured_area:
             pattern:    ^/
             form_login:
-                check_path: jbp_user_login_check
-                login_path: jbp_user_login
-                default_target_path: jbp_user_index
-                #csrf_token_generator: security.csrf.token_manager
+                check_path: /user/login_check
+                login_path: /user/login
+                default_target_path: /user
+                csrf_token_generator: security.csrf.token_manager
 
             logout:
-                path:   jbp_user_logout
-                target: jbp_user_login
+                path:   /user/logout
+                target: /user/login
 
             remember_me:
                 secret:   '%secret%'
